@@ -40,7 +40,7 @@ while (!isTelnetConnected)
 			config.TelnetPort,
 			new CancellationToken());
 		isTelnetConnected = true;
-	} catch (Exception _) {
+	} catch (Exception) {
 		Console.WriteLine("Waiting for Telnet Connection");
 		Thread.Sleep(1000);
 	}

@@ -1,23 +1,37 @@
 name: Build and Release
 
-on: [push]
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     strategy:
-      matrix:
-        dotnet-version: [ '3.0', '3.1.x', '5.0.x' ]
       steps:
-        - uses: actions/checkout@v3
+         # Checkout the Repository
+         - name: Checkout
+          uses: actions/checkout@v3
+          with:
+            fetch-depth: 0
+        
+        # Install .NET
         - name: Setup dotnet
           uses: actions/setup-dotnet@v3
           with:
-            dotnet-version: ${{ matrix.dotnet-version }}
+            dotnet-version: 6.0.x
+
+        # Install NuGet Dependencies
         - name: Install dependencies
           run: dotnet restore
+         
+        # Create Build
         - name: dotnet publish
           run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/build
+          
+        # Upload as Job Artifact
         - name: Upload artifact for deployment job
           uses: actions/upload-artifact@v2
           with:

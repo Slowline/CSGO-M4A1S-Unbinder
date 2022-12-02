@@ -59,7 +59,7 @@ gsl.NewGameState += gs => {
 	lastWeapon = weaponName;
 
 	// If Weapon is not M4A1S reset currentlyEquipped
-	if (weaponName != config.WeaponIdentifier) {
+	if (!config.WeaponIdentifiers.Contains(weaponName)) {
 		// Execute Unbind Command
 		ExecuteCommands(config.BindCommands);
 		
@@ -77,7 +77,7 @@ gsl.NewGameState += gs => {
 	currentlyEquipped = true;
 
 	// Send Telnet command to CS:GO
-	Console.WriteLine("M4A1-S is active");
+	Console.WriteLine("Weapons are active, unbinding...");
 	ExecuteCommands(config.UnbindCommands);
 };
 
@@ -103,15 +103,20 @@ Config GetConfigFile () {
 		// Write Config File
 		File.WriteAllText(filePath, JsonConvert.SerializeObject(new Config
 		{
-			WeaponIdentifier = "weapon_m4a1_silencer",
+			WeaponIdentifiers = new List<string>
+			{
+				"weapon_m4a1_silencer",
+				"weapon_usp_silencer",
+				"weapon_deagle"
+			},
 			BindCommands = new List<string>
 			{
 				"bind mouse2 +attack2",
-				"echo M4A1-S is inactive"
+				"echo Weapons are inactive, binding..."
 			},
 			UnbindCommands = new List<string>
 			{
-				"echo M4A1-S is active",
+				"echo Weapons are active, unbinding...",
 				"-attack2",
 				"unbind mouse2"
 			},

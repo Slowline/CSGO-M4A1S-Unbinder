@@ -6,6 +6,29 @@ To execute CS:GO Console Commands, we have to activate the built-in Telnet Suppo
 To do this we have to add the following line to our launch options: `-netconport 2121` which will **open a Telnet Server that can be used to send commands to the CS:GO console**.
 This Port can be changed to any other Port you want to use by editing the config file, which will be generated at the first startup.
 
+The default config file will unbind `mouse2` for the weapons `weapon_m4a1_silencer, weapon_usp_silencer and weapon_deagle` because of the silencer and the annoying deagle bug where you're not able to shoot if you're holding right click before firing.
+The content of the file will look like this and can be changed by you:
+```json
+{
+  "GsiPort": 3000,
+  "TelnetPort": 2121,
+  "UnbindCommands": [
+    "echo Weapons are active, unbinding...",
+    "-attack2",
+    "unbind mouse2"
+  ],
+  "BindCommands": [
+    "bind mouse2 +attack2",
+    "echo Weapons are inactive, binding..."
+  ],
+  "WeaponIdentifiers": [
+    "weapon_m4a1_silencer",
+    "weapon_usp_silencer",
+    "weapon_deagle"
+  ]
+}
+```
+
 ## Installation
 1. Download the latest release from [here]()
 2. Extract the zip file

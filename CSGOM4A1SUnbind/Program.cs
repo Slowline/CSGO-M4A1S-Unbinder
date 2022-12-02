@@ -50,10 +50,23 @@ gsl.NewGameState += gs => {
 	// Fetch current Weapon Name
 	var weaponName = gs.Player.Weapons.ActiveWeapon.Name;
 
+	// Weapon has not changed, do nothing
+	if (weaponName == lastWeapon) {
+		return;
+	}
+	
+	// Save our current Weapon as last Weapon
+	lastWeapon = weaponName;
+
 	// If Weapon is not M4A1S reset currentlyEquipped
-	if (weaponName != config.WeaponIdentifier && weaponName != lastWeapon) {
+	if (weaponName != config.WeaponIdentifier) {
+		// Execute Unbind Command
 		ExecuteCommands(config.BindCommands);
+		
+		// Reset currentlyEquipped
 		currentlyEquipped = false;
+		
+		// And Skip the rest of the function
 		return;
 	}
 

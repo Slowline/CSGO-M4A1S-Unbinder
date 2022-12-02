@@ -30,7 +30,7 @@ The content of the file will look like this and can be changed by you:
 ```
 
 ## Installation
-1. Download the latest release from [here]()
+1. Download the latest release from [here](https://github.com/Slowline/CSGO-M4A1S-Unbinder/releases)
 2. Extract the zip file
 3. Copy the `gamestate_integration_csgom4a1sunbind.cfg` to your `csgo/cfg` folder
 4. Add `-netconport 2121` to your launch options

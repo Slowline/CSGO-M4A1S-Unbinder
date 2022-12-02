@@ -36,3 +36,5 @@ The content of the file will look like this and can be changed by you:
 4. Add `-netconport 2121` to your launch options
 5. Run the .exe file
 6. Enjoy having right click unbound if you have a M4A1-S equipped
+
+If you change the `GsiPort` or `TelnetPort` you have to adjust them accordingly in the launch options or in the gamestate config file.

@@ -45,3 +45,7 @@ As soon as the Game is sending a Game State Event, the program will check agains
 If true, the program will execute the commands in the `UnbindCommands` array. If false, the program will execute the commands in the `BindCommands` array.
 
 If you change the `GsiPort` or `TelnetPort` you have to adjust the launch options or the game state config file accordingly.
+
+## References
+1. [https://developer.valvesoftware.com/wiki/Counter-Strike:_Global_Offensive_Game_State_Integration](https://developer.valvesoftware.com/wiki/Counter-Strike:_Global_Offensive_Game_State_Integration)
+2. [https://developer.valvesoftware.com/wiki/Command_Line_Options](https://developer.valvesoftware.com/wiki/Command_Line_Options#:~:text=%2Dnetconport%20%3Cnumber%3E%20%2D%20Creates%20a%20remotely%20accessible%20server%20console%20on%20the%20specified%20port.%20This%20can%20be%20connected%20to%20with%20telnet%20or%20similar%20applications%2C%20and%20allows%20controlling%20of%20the%20server%20as%20if%20the%20commands%20were%20being%20typed%20in%20at%20the%20console)
